@@ -1,0 +1,26 @@
+@import "vendors.scss";
+
+//шрифты
+@import "fonts.scss";
+
+//переменный и миксины
+@import "_vars.scss";
+@import "_mix.scss";
+
+//базовые глобальные стили
+@import "basic.scss";
+@import "cursor.scss";
+@import "bar.scss";
+@import "catalog.scss";
+@import "footer.scss";
+
+//страницы
+
+//глобальные модули
+@import "intro.scss";
+@import "main-sec.scss";
+@import "gallery.scss";
+@import "portfolio.scss";
+@import "map.scss";
+
+//модули

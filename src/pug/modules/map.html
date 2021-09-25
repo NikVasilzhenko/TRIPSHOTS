@@ -1,0 +1,187 @@
+<div class="map">
+  <div class="map__wrap" id="js-map">
+    
+  </div>
+</div>
+
+
+<script src="https://api-maps.yandex.ru/2.0/?load=package.standard,package.geoObjects&lang=ru-RU&scroll=true"></script>
+<script>
+  ymaps.ready(init);
+  var map;						
+  function init(){     
+    map = new ymaps.Map("js-map", {
+      center: [41.130211, 28.956618],
+      zoom: 3,
+    }, {
+      minZoom: 3,
+      maxZoom: 15,
+      maxAnimationZoomDifference: 50
+    });
+    
+    //activation scrollZoom
+    map.behaviors.enable('scrollZoom');
+    
+    //Placemarks
+    
+    //PlacesPlacemark
+    function buildPlacePlacemark(coord, icon, name, pic, country, flag){
+      return new ymaps.Placemark(
+        coord,
+        { 
+          hintContent: name,
+          balloonContentBody: '<div class="baloon-card">' +    
+              '<div class="baloon-card__overlay"></div>' +
+              '<a class="baloon-card__link" href="#"><img class="baloon-card__pic" src="img/pic/catalog/' + pic + '"></a>' +
+              '<div class="baloon-card__wrap">' +
+                '<div class="baloon-card__flag"><img class="baloon-card__pic" src="img/pic/flags/' + flag + '"></div>' +
+                '<a class="baloon-card__name" href="#">' + name + '</a><br/>' +
+                '<span class="baloon-card__land">' + country + '</span>' +
+              '</div>' +
+            '</div>',
+        },
+      {
+        iconLayout: 'default#image',
+        iconImageHref: 'img/svg/' + icon,
+        iconImageSize: [48, 48],
+        iconImageOffset: [-24, -48],        
+      }
+      );
+    }    
+    
+    var saona_placemark = buildPlacePlacemark([18.143610, -68.693066], 'island.svg', 'Остров Саона', 'dominican-min.jpg', 'Доминиканская республика', 'do.svg');
+    
+    var placePlacemarks = [
+      saona_placemark
+    ];
+    
+    for (let i = 0; i < placePlacemarks.length; i++) {
+      placePlacemarks[i].options.set('visible', false);
+    }
+    
+//    saona_placemark.events.add(['click'],  function (e) {
+//       console.log('Saona island');
+//    });
+    
+    //CountryPlacemark
+    function buildCountryPlacemark(coord, flag, name){
+      return new ymaps.Placemark(
+        coord,
+        { 
+          hintContent: name
+        },
+        {
+          iconLayout: 'default#image',
+          iconImageHref: 'img/pic/flags/' + flag,
+          iconImageSize: [24, 24],
+          iconImageOffset: [-12, -12],
+
+        }
+      );
+    }
+    function showRegion(setedCenter, setedZoom){
+      map.setCenter(setedCenter, setedZoom,
+        {
+          smooth: true,
+          position: setedCenter,
+          centering: setedCenter,
+          duration: 1000,
+        }
+      );
+    }
+    
+    var dominikana_placemark   = buildCountryPlacemark([18.729069, -70.255327], 'do_invert.svg', 'Доминиканская республика'),
+        egypt_placemark        = buildCountryPlacemark([25.974380, 29.072290],  'eg_invert.svg', 'Египет'),
+        thailand_placemark     = buildCountryPlacemark([16.174976, 100.883670], 'th_invert.svg', 'Тайланд'),
+        china_placemark        = buildCountryPlacemark([30.838917, 104.126126], 'cn_invert.svg', 'Китай (Чэнду)'),
+        south_china_placemark  = buildCountryPlacemark([23.369713, 113.533162], 'cn_invert.svg', 'Китай (Гуанчжоу)'),
+        turkey_placemark       = buildCountryPlacemark([38.932041, 34.659446], 'tr_invert.svg', 'Турция'),
+        indonesia_placemark    = buildCountryPlacemark([-1.469772, 102.855607], 'id_invert.svg', 'Индонезия'),
+        west_russia_placemark  = buildCountryPlacemark([54.721378, 20.524377], 'ru_invert.svg', 'Россия (Калининградская обл.)'),
+        south_russia_placemark = buildCountryPlacemark([44.685916, 44.101896], 'ru_invert.svg', 'Россия (Юг)');
+    
+    var countryPlacemarks = [
+      dominikana_placemark,
+      egypt_placemark,
+      thailand_placemark,
+      china_placemark,
+      south_china_placemark,
+      turkey_placemark,
+      indonesia_placemark,
+      west_russia_placemark,
+      south_russia_placemark
+    ];
+        
+        
+    dominikana_placemark.events.add(['click'],  function (e) {
+       showRegion([18.514003, -69.313986], 10);
+    });
+    egypt_placemark.events.add(['click'],  function (e) {
+       showRegion([28.349877, 33.070502], 7);
+    });
+    turkey_placemark.events.add(['click'],  function (e) {
+       showRegion([38.758424, 30.508969], 7);
+    });
+    indonesia_placemark.events.add(['click'],  function (e) {
+       showRegion([-8.515427, 115.129737], 10);
+    });
+    thailand_placemark.events.add(['click'],  function (e) {
+       showRegion([8.263409, 97.990588], 10);
+    });
+    china_placemark.events.add(['click'],  function (e) {
+       showRegion([30.666022, 104.062644], 11);
+    });
+    south_china_placemark.events.add(['click'],  function (e) {
+       showRegion([23.150702, 113.270218], 11);
+    });
+    south_russia_placemark.events.add(['click'],  function (e) {
+       showRegion([44.685916, 44.101896], 7);
+    });
+    west_russia_placemark.events.add(['click'],  function (e) {
+       showRegion([54.721378, 20.524377], 9);
+    });
+     
+    
+    
+    //Placemarks inits 
+    function placemarksInit(placemarksAray){
+      for (let i = 0; i < placemarksAray.length; i++) {
+        map.geoObjects.add(placemarksAray[i]);
+      }
+    }
+    placemarksInit(countryPlacemarks);
+    placemarksInit(placePlacemarks);
+
+    
+    //show/hide placemarks from zoom
+    map.events.add('boundschange', function(event){
+      console.log(event.get('newZoom'));
+      if (event.get('newZoom') >= 7) {
+        saona_placemark.options.set('visible', true);
+        for (let i = 0; i < countryPlacemarks.length; i++) {
+          countryPlacemarks[i].options.set('visible', false);
+        }
+      } else{
+        saona_placemark.options.set('visible', false);
+        for (let i = 0; i < countryPlacemarks.length; i++) {
+          countryPlacemarks[i].options.set('visible', true);
+        }
+      }
+    });
+    
+    
+    
+    
+    
+    //close baloon from zoom
+    map.events.add('dblclick', function(){
+      map.balloon.close();
+    });
+    map.events.add('wheel', function(){
+      map.balloon.close();
+    });
+
+
+    
+  };    
+</script>

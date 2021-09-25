@@ -1,0 +1,129 @@
+/*baisic*/
+html{
+  -webkit-locale: "ru-RU";
+  direction: ltr;
+  unicode-bidi: isolate;
+  min-height: 100%;
+  font-size: 62.5%;
+  @media only screen and (max-width : 1366px){font-size: 56%;}
+  @media only screen and (max-width : 1224px){font-size: 50%;}
+  @media only screen and (max-width : 1099px){font-size: 45%;}
+  @media only screen and (max-width : 991px){font-size: 40%;}
+  @media only screen and (max-width : 891px){font-size: 36%;}
+  @media only screen and (max-width : 799px){font-size: 34%;}
+  @media only screen and (max-width : 767px){font-size: 56%;}
+  @media only screen and (max-width : 359px){font-size: 50%;}  
+}
+html, body{
+  min-height: 100%;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+body{
+  font: 400 1.6rem/1.2 $font-main;
+  color: #fff;
+  background: #000;
+  min-width: 310px; 
+  min-height: 100%;
+  position: relative;
+  overflow-x: hidden;
+  opacity: 1;
+  -moz-font-feature-settings: 'kern';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none;
+  &.open-bar{
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+/*clearfix*/
+.clearfix{
+  zoom: 1;
+  &:before,
+  &:after{
+    content: '';
+    display: table;
+  }
+  &:after{clear: both;}
+}
+
+/*box-sizing*/
+*, *:before, *:after, input[type="search"]{
+  box-sizing: border-box;
+}
+
+/*buttons*/
+.btn{
+  @include btn-reset;
+}
+
+/*layout*/
+.overwrap{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  left: 0;
+  transition: filter 1.4s cubic-bezier(.19,1,.22,1), left 1.4s cubic-bezier(.19,1,.22,1);
+}
+.open-bar .overwrap{
+  filter: blur(6px);
+  left: 44rem;
+  @media only screen and (max-width : 767px){
+    left: 100vw;
+  }
+}
+.wrapper{
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;	
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-direction: column;
+  & > *{width: 100%;}
+}
+.main{flex-grow: 1;}
+.sec{
+  margin: 14rem 0;
+  @media only screen and (max-width : 767px){
+    margin: 2rem 0;
+  }
+}
+
+.container{
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 120rem;
+}
+
+/*typographyc*/
+ol,ul,li,h1,h2,h3,h4,h5,h6,p,q,figure,figcaption,blockquote,cite,fieldset,hr{    
+  margin:0;
+  padding: 0;    
+  border: none;
+}
+ul li, ol li{list-style: none;}
+a{
+  text-decoration: none;
+  outline: none;
+  transition: .25s ease;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  &:-moz-any-link:focus ,
+  &:-moz-focusring,
+  &::-moz-focus-inner,
+  &::-moz-focus-outer{
+    outline: 0!important;
+    outline: none;
+  }
+  &:active {outline: none;}
+  &[href^="tel:"],
+  &[href^="mailto:"]{white-space: nowrap;}
+}
+img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

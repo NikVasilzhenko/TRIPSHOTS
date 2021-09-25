@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+html(lang="Ru-ru")
+  head
+    meta(charset="UTF-8")
+    title TripShots | Карта
+    meta(http-equiv="x-ua-compatible" content="ie=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1")
+    link(rel="stylesheet" href="css/style.css")
+    link(rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png")
+    link(rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png")
+    link(rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png")
+    link(rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png")
+    link(rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png")
+    link(rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png")
+    link(rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png")
+    link(rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png")
+    link(rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png")
+    link(rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png")
+    link(rel="manifest" href="img/favicon/manifest.json")
+    meta(name="msapplication-TileColor" content="#fff")
+    meta(name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png")
+    meta(name="theme-color" content="#fff")
+    meta(name="description" content="TripShots | Фотки из путешествий")
+    meta(name="keywords" content="Travel blogs, travel photo, travel photography, тревл блог, блог о путешествиях")
+    link(rel="image_src" href="https://tripshots.photos/img/og/og.jpg")
+    meta(property="og:type" content="website")
+    meta(property="og:url" content="https://tripshots.photos")
+    meta(property="og:image" content="https://tripshots.photos/img/og/og.jpg")
+    meta(property="og:image:type" content="image/jpeg")
+    meta(property="og:image:width" content="1024")
+    meta(property="og:image:height" content="512")    
+    meta(property="og:title" content="TripShots | Фотки из путешествий")
+    meta(property="og:description" content="Ездим, фоткаем")
+    meta(property="og:locale" content="Ru-ru")
+    meta(property="og:site_name" content="https://tripshots.photos")
+    meta(name="twitter:card" content="summary_large_image")
+    meta(name="twitter:site" content="https://tripshots.photos")
+    meta(name="twitter:title" content="TripShots | Фотки из путешествий")
+    meta(name="twitter:description" content="Ездим, фоткаем")
+    meta(name="twitter:creator" content="NikVasilzhenko")
+    meta(name="twitter:image:src" content="https://tripshots.photos/img/og/twitter.jpg")
+    meta(name="twitter:domain" content="https://tripshots.photos")
+    meta(name="theme-color" content="#000")
+    meta(name="msapplication-navbutton-color" content="#000")
+    meta(name="apple-mobile-web-app-status-bar-style" content="default")
+    meta(name="mobile-web-app-capable" content="yes")
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="mobile-web-app-status-bar-style" content="black")
+    meta(name="apple-mobile-web-app-status-bar-style" content="black")
+    meta(name="mobile-web-app-title" content="TripShots | Фотки из путешествий")
+    meta(name="apple-mobile-web-app-title" content="Ездим, фоткаем")
+    link(rel="mask-icon" href="/apple/desktop.svg" color="#000")
+  body
+    include ../global_modules/intro.html
+    include ../global_modules/cursor.html
+    include ../global_modules/bar.html
+    include ../global_modules/catalog.html
+    .overwrap#js-overvrap     
+      .wrapper
+        main.main
+          include ../modules/map.html
+        include ../global_modules/footer.html
+    include ../global_modules/scripts
